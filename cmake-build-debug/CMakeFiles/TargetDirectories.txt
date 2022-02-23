@@ -1,0 +1,3 @@
+/Users/adrianagimeno/Desktop/2n TRIMESTRE/ESTRUCTURES DE DADES I ALGORISMES I/PRÀCTIQUES/P2/students/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/adrianagimeno/Desktop/2n TRIMESTRE/ESTRUCTURES DE DADES I ALGORISMES I/PRÀCTIQUES/P2/students/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/adrianagimeno/Desktop/2n TRIMESTRE/ESTRUCTURES DE DADES I ALGORISMES I/PRÀCTIQUES/P2/students/cmake-build-debug/CMakeFiles/goose_game_p2.dir
