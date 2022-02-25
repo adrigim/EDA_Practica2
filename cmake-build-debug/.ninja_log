@@ -1,0 +1,27 @@
+# ninja log v5
+2	947	1645785462712526365	CMakeFiles/goose_game_p2.dir/src/sources/square.c.o	1d64a25935a465ee
+4	959	1645785462729507364	CMakeFiles/goose_game_p2.dir/src/sources/player.c.o	20ade3cca735c678
+6	961	1645785462729634933	CMakeFiles/goose_game_p2.dir/src/sources/state.c.o	d0650c4542d5d530
+1	965	1645785462735784703	CMakeFiles/goose_game_p2.dir/src/sources/utils.c.o	fc7d344e14c46c9f
+2	967	1645785462737267903	CMakeFiles/goose_game_p2.dir/src/sources/board_static.c.o	4d2b55bd2597245b
+3	985	1645785462753159232	CMakeFiles/goose_game_p2.dir/src/sources/file_manager.c.o	3b2838248dfd6775
+965	1056	1645785462822529551	CMakeFiles/goose_game_p2.dir/src/sources/main.c.o	427f00de86769c42
+961	1108	1645785462878830191	CMakeFiles/goose_game_p2.dir/src/sources/menu.c.o	5a747be05c2f44e9
+948	1144	1645785462914239805	CMakeFiles/goose_game_p2.dir/src/sources/board_utils.c.o	4540bef0ef090400
+959	1200	1645785462968790029	CMakeFiles/goose_game_p2.dir/src/sources/game.c.o	f500357b6dbe17ff
+1202	1424	1645785463167826033	goose_game_p2	1455e5000605b46b
+2	607	1645785525101644728	CMakeFiles/goose_game_p2.dir/src/sources/board_static.c.o	4d2b55bd2597245b
+608	887	1645785525335970430	goose_game_p2	1455e5000605b46b
+4	948	1645785983118680336	CMakeFiles/goose_game_p2.dir/src/sources/board_utils.c.o	4540bef0ef090400
+948	1134	1645785983291051721	goose_game_p2	1455e5000605b46b
+16	244	1645786176522420489	CMakeFiles/goose_game_p2.dir/src/sources/board_static.c.o	4d2b55bd2597245b
+245	423	1645786176676303599	goose_game_p2	1455e5000605b46b
+2	631	1645786484958605216	CMakeFiles/goose_game_p2.dir/src/sources/board_static.c.o	4d2b55bd2597245b
+631	815	1645786485111511606	goose_game_p2	1455e5000605b46b
+2	117	1645786515905480626	CMakeFiles/goose_game_p2.dir/src/sources/board_static.c.o	4d2b55bd2597245b
+118	247	1645786516013706394	goose_game_p2	1455e5000605b46b
+15	134	1645786537925280905	CMakeFiles/goose_game_p2.dir/src/sources/board_static.c.o	4d2b55bd2597245b
+134	287	1645786538036445493	goose_game_p2	1455e5000605b46b
+14	225	1645786823616869773	CMakeFiles/goose_game_p2.dir/src/sources/board_static.c.o	4d2b55bd2597245b
+17	278	1645786823676690182	CMakeFiles/goose_game_p2.dir/src/sources/game.c.o	f500357b6dbe17ff
+279	498	1645786823848252714	goose_game_p2	1455e5000605b46b

@@ -3,7 +3,6 @@
 
 // TODO: Initializes the state, setting the provided playing board and
 //  sets the default values for player count, turn and finished.
-
 /**
  * Pre:
  * Post:
@@ -15,11 +14,12 @@
  * @param board The playing board.
  */
 void init_state(State* state, Board* board) {
+    state->board = board;
+    state->player_count = 0;
+    state->turn = 0;
+    state->finished = 0;
 }
-
-
 // TODO: Returns the player count.
-
 /**
  * Pre:
  * Post:
@@ -30,14 +30,13 @@ void init_state(State* state, Board* board) {
  * @return The player count.
  */
 int get_player_count(State* state) {
-    return 0;
+    return state->player_count;
 }
 
 // TODO: Adds a player to the state by:
 //  - Checking if it is possible.
 //  - If it is, initializing the next available player.
 //  - Incrementing the player count.
-
 /**
  * Pre:
  * Post:
@@ -53,7 +52,6 @@ int add_player(State* state, char symbol) {
 }
 
 // TODO: Returns the corresponding player.
-
 /**
  * Pre:
  * Post:
@@ -69,7 +67,6 @@ Player* get_player(State* state, int idx) {
 }
 
 // TODO: Returns the current player, according to the turn.
-
 /**
  * Pre:
  * Post:

@@ -8,7 +8,9 @@
 enum square_type {
     EMPTY,
     GOOSE,
-    DEATH
+    BRIDGE,
+    PRISON,
+    DEATH,
 };
 typedef enum square_type SquareType;
 

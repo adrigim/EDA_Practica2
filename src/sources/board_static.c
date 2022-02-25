@@ -17,11 +17,16 @@
  * or if columns is less than 2 or more than MAX_COLUMNS.
  */
 int init_board(Board* board, int rows, int columns) {
-    return ERROR;
+    set_rows(&board, rows);
+    set_columns(&board, columns);
+
+    for(int i = 0; i < get_size(&board); i++) {
+        init_square(&board->squares[i], i);
+    }
+    return SUCCESS;
 }
 
 // TODO: Returns the number of rows of the board.
-
 /**
  * Pre:
  * Post:
@@ -32,7 +37,7 @@ int init_board(Board* board, int rows, int columns) {
  * @return The number of rows of the board.
  */
 int get_rows(Board* board) {
-    return 0;
+    return board->rows;
 }
 
 // TODO: Sets the number of rows of the board.
@@ -46,6 +51,7 @@ int get_rows(Board* board) {
  * @param board The board to be queried.
  */
 void set_rows(Board* board, int rows) {
+    board->rows = rows;
 }
 
 // TODO: Return the number of columns of the board.
@@ -60,11 +66,10 @@ void set_rows(Board* board, int rows) {
  * @return The number of columns of the board.
  */
 int get_columns(Board* board) {
-    return 0;
+    return board->columns;
 }
 
 // TODO: Sets the number of columns of the board.
-
 /**
  * Pre:
  * Post:
@@ -74,10 +79,10 @@ int get_columns(Board* board) {
  * @param board The board to be queried.
  */
 void set_columns(Board* board, int columns) {
+    board->columns = columns;
 }
 
 // TODO: Returns the size of the board, it is, the total number of squares.
-
 /**
  * Pre:
  * Post:
@@ -88,11 +93,11 @@ void set_columns(Board* board, int columns) {
  * @return The size of the board.
  */
 int get_size(Board* board) {
-    return 0;
+    int size = board->rows * board->columns;
+    return size;
 }
 
 // TODO: Returns the board square at the specific position.
-
 /**
  * Pre:
  * Post:
@@ -104,14 +109,13 @@ int get_size(Board* board) {
  * @return The (reference to the) square of the board corresponding to the position if valid, NULL otherwise.
  */
 Square* get_square_at(Board *board, int position) {
-    return NULL;
+    return &board->squares[position];
 }
 
 // TODO: Given a board, a square type, a starting position and a reverse flag, search for the
 //  next square starting from the starting position that has the required square type. If the
 //  'reverse' flag is false, the search is incremental, if 'reverse' is true, the search is
 //  decremental.
-
 /**
  * Pre:
  * Post:
@@ -126,11 +130,24 @@ Square* get_square_at(Board *board, int position) {
  * @return The index of the square, if exists, -1 otherwise.
  */
 int find_square_by_type(Board *board, SquareType type, int starting_position, bool reverse) {
-    return -1;
+    if(reverse == false) {
+        for(int i = starting_position; i < get_size(board); i++) {
+            if(get_type(&board->squares[i]) == type) {
+                return i;
+            }
+        }
+    }
+
+    else {
+        for(int i = starting_position; i >= 0; i--){
+            if(get_type(&board->squares[i]) == type) {
+                return i;
+            }
+        }
+    }
 }
 
 // TODO: Nothing.
-
 /**
  * Pre: -
  * Post: -

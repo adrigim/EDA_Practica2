@@ -2,7 +2,6 @@
 
 // TODO: Initializes the square's attributes with the provided
 //  position and empty as default type.
-
 /**
  * Pre:
  * Post:
@@ -14,10 +13,11 @@
  * @param position The position of the square.
  */
 void init_square(Square* square, int position) {
+    square -> type = EMPTY;
+    square -> position = position;
 }
 
 // TODO: Returns the position of the square.
-
 /**
  * Pre:
  * Post:
@@ -28,11 +28,10 @@ void init_square(Square* square, int position) {
  * @return The position of the square.
  */
 int get_position(Square* square) {
-    return -1;
+    return square->position;
 }
 
 // TODO: Returns the type of the square.
-
 /**
  * Pre:
  * Post:
@@ -43,11 +42,10 @@ int get_position(Square* square) {
  * @return The type of the square.
  */
 SquareType get_type(Square* square) {
-    return EMPTY;
+    return square->type;
 }
 
 // TODO: Sets the type of the square.
-
 /**
  * Pre:
  * Post:
@@ -58,4 +56,5 @@ SquareType get_type(Square* square) {
  * @param type The type of square to be set.
  */
 void set_type(Square* square, SquareType type) {
+    square->type = type;
 }

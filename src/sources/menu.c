@@ -14,19 +14,18 @@ int load_from_file(Board* board) {
     char name[MAX_FILENAME];
     int matches = scanf("%s", name);
     flush_input();
-
     int status;
+
     if (matches == 1) {
         char path[MAX_FILENAME];
         strncpy(path, "resources/", MAX_FILENAME);
         strcat(path, name);
         strcat(path, ".txt");
-
         status = load_board(board, path);
-    } else {
+    }
+    else {
         status = INVALID_FILE_NAME;
     }
-
     return status;
 }
 
@@ -45,8 +44,8 @@ int init_custom_empty_board(Board* board) {
 }
 
 int show_load_menu(Board *board) {
-
     int status = INVALID_OPTION;
+
     while (status != SUCCESS && status != CANCELLED) {
 
         if (status != INVALID_OPTION) {
@@ -95,16 +94,12 @@ int show_load_menu(Board *board) {
         }
     }
     // draw_board(stdout, board, NULL);
-
     return status;
 }
 
-
 void show_game_menu(Board *board) {
-
     int option = INVALID_OPTION;
     while (option != OPTION_CANCEL) {
-
         printf("\n");
         printf( "%d. Start game\n", OPTION_START_GAME);
         printf( "%d. Show solution\n", OPTION_SHOW_SOLUTION);
@@ -115,10 +110,8 @@ void show_game_menu(Board *board) {
             case OPTION_START_GAME:
                 start_game(board);
                 break;
-
             case OPTION_CANCEL:
                 break;
-
             default:
                 printf("Invalid option!\n");
                 break;
@@ -127,13 +120,11 @@ void show_game_menu(Board *board) {
 }
 
 void show_menu() {
-
     printf("Welcome to the goose game!\n");
     printf("What do you want to do?\n");
 
     int option = INVALID_OPTION;
     while (option != OPTION_QUIT) {
-
         printf("\n");
         printf( "%d. Load board configuration\n",  OPTION_LOAD);
         printf( "%d. Show empty board\n",  OPTION_EMPTY);
@@ -142,11 +133,11 @@ void show_menu() {
 
         if (option == OPTION_QUIT) {
             // Do nothing, it will exit the loop
-
-        } else if (option == OPTION_LOAD) {
-
+        }
+        else if (option == OPTION_LOAD) {
             Board board;
             int load_result = show_load_menu(&board);
+
             if (load_result == SUCCESS) {
                 show_game_menu(&board);
             }
@@ -158,21 +149,21 @@ void show_menu() {
 
                 free_board(&board);
             }
-
-        } else if (option == OPTION_EMPTY) {
-
+        }
+        else if (option == OPTION_EMPTY) {
             Board board;
             int status = init_board(&board, MAX_ROWS, MAX_COLUMNS);
+
             if (status == SUCCESS) {
                 State state;
                 init_state(&state, &board);
                 draw_zigzag_board(stdout, &state);
-
-            } else {
+            }
+            else {
                 printf("The initialization was unsuccessful...\n");
             }
-
-        } else {
+        }
+        else {
             printf("Invalid option!\n");
         }
     }

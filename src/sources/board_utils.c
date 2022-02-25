@@ -85,7 +85,6 @@ void draw_middle_top(FILE* fd, BoardSquare* bSquare) {
     }
 }
 void draw_middle_bottom(FILE* fd, BoardSquare* bSquare) {
-
     int graphical_type = get_graphical_type(bSquare);
     if (graphical_type == INITIAL_SQUARE || graphical_type == LEFT_FINAL_SQUARE ||
         graphical_type == LEFT_BOTTOM_SQUARE || graphical_type == LEFT_TOP_SQUARE) {

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <sys/select.h>
+//#include <sys/select.h>
 #include <unistd.h>
 
 #include "../headers/game.h"
@@ -16,7 +16,7 @@ char show_game_options() {
     char option = read_char_option("Press T for throwing the dice, Q for quit\n");
     return option;
 }
-
+/*
 int wait_keypress(int usec) {
     struct timeval timeout = {0, usec};
     fd_set fds;
@@ -32,11 +32,11 @@ int wait_keypress(int usec) {
     }
     return ret;
 }
-
+*/
 int throw_dice(bool with_rolling) {
     int value = (rand() % 6) + 1;
 
-    if (with_rolling) {
+    /*if (with_rolling) {
         int iterations = 0;
         bool keypressed = false;
         while (keypressed == false && iterations < MAX_ITERATIONS) {
@@ -53,7 +53,7 @@ int throw_dice(bool with_rolling) {
         printf("\rLast roll: %d!\n", value);
     } else {
         printf("Dice roll... %d!\n", value);
-    }
+    }*/
 
     return value;
 }
