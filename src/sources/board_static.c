@@ -17,10 +17,10 @@
  * or if columns is less than 2 or more than MAX_COLUMNS.
  */
 int init_board(Board* board, int rows, int columns) {
-    set_rows(&board, rows);
-    set_columns(&board, columns);
+    set_rows(board, rows);
+    set_columns(board, columns);
 
-    for(int i = 0; i < get_size(&board); i++) {
+    for(int i = 0; i < get_size(board); i++) {
         init_square(&board->squares[i], i);
     }
     return SUCCESS;
