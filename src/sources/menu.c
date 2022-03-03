@@ -122,8 +122,8 @@ void show_game_menu(Board *board) {
 void show_menu() {
     printf("Welcome to the goose game!\n");
     printf("What do you want to do?\n");
-
     int option = INVALID_OPTION;
+
     while (option != OPTION_QUIT) {
         printf("\n");
         printf( "%d. Load board configuration\n",  OPTION_LOAD);
@@ -133,8 +133,8 @@ void show_menu() {
 
         if (option == OPTION_QUIT) {
             // Do nothing, it will exit the loop
-        }
-        else if (option == OPTION_LOAD) {
+
+        } else if (option == OPTION_LOAD) {
             Board board;
             int load_result = show_load_menu(&board);
 
@@ -149,8 +149,8 @@ void show_menu() {
 
                 free_board(&board);
             }
-        }
-        else if (option == OPTION_EMPTY) {
+
+        } else if (option == OPTION_EMPTY) {
             Board board;
             int status = init_board(&board, MAX_ROWS, MAX_COLUMNS);
 
@@ -158,12 +158,11 @@ void show_menu() {
                 State state;
                 init_state(&state, &board);
                 draw_zigzag_board(stdout, &state);
-            }
-            else {
+            } else {
                 printf("The initialization was unsuccessful...\n");
             }
-        }
-        else {
+
+        } else {
             printf("Invalid option!\n");
         }
     }

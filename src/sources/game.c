@@ -12,7 +12,6 @@
 #define MAX_ITERATIONS 1000
 
 char show_game_options() {
-
     char option = read_char_option("Press T for throwing the dice, Q for quit\n");
     return option;
 }
@@ -59,7 +58,6 @@ int throw_dice(bool with_rolling) {
 }
 
 char ask_for_player() {
-
     printf("Do you want to add another player?\n");
     char option = read_char_option("(y/N) ");
 
@@ -68,19 +66,21 @@ char ask_for_player() {
     } else {
         option = '\0';
     }
+
     return option;
 }
 
 void start_game(Board *board) {
-
     State state;
     init_state(&state, board);
 
     printf("Enter a symbol for the default player:\n");
     char symbol = read_char_option("(X) ");
+
     if (symbol == '\0') {
         symbol = 'X';
     }
+
     add_player(&state, symbol);
 
     symbol = ask_for_player();
@@ -96,7 +96,6 @@ void start_game(Board *board) {
     bool quit = false;
     printf("Starting game...\n\n");
     while (!quit) {
-
         draw_zigzag_board(stdout, &state);
 
         Player* player = get_current_player(&state);

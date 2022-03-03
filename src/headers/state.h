@@ -27,5 +27,6 @@ bool is_finished(State* state);
 void set_finished(State* state, bool finished);
 
 int move(State* state, int dice_value, bool print_actions);
+int find_next_position(State* state, Player* player, SquareType type);
 
 #endif //STATE_H

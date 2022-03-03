@@ -2,8 +2,6 @@
 
 #include "../headers/board_static.h"
 
-// TODO: Initializes the board, initializing also each square of it.
-
 /**
  * Pre:
  * Post:
@@ -26,12 +24,9 @@ int init_board(Board* board, int rows, int columns) {
     return SUCCESS;
 }
 
-// TODO: Returns the number of rows of the board.
 /**
  * Pre:
- * Post:
- *
- * Returns the number of rows of the board.
+ * Post: Returns the number of rows of the board.
  *
  * @param board The board to be queried.
  * @return The number of rows of the board.
@@ -40,13 +35,9 @@ int get_rows(Board* board) {
     return board->rows;
 }
 
-// TODO: Sets the number of rows of the board.
-
 /**
  * Pre:
- * Post:
- *
- * Sets the number of rows of the board.
+ * Post: Sets the number of rows of the board.
  *
  * @param board The board to be queried.
  */
@@ -54,13 +45,9 @@ void set_rows(Board* board, int rows) {
     board->rows = rows;
 }
 
-// TODO: Return the number of columns of the board.
-
 /**
  * Pre:
- * Post:
- *
- * Returns the number of columns of the board.
+ * Post: Returns the number of columns of the board.
  *
  * @param board The board to be queried.
  * @return The number of columns of the board.
@@ -69,12 +56,9 @@ int get_columns(Board* board) {
     return board->columns;
 }
 
-// TODO: Sets the number of columns of the board.
 /**
  * Pre:
- * Post:
- *
- * Sets the number of columns of the board.
+ * Post: Sets the number of columns of the board.
  *
  * @param board The board to be queried.
  */
@@ -82,12 +66,9 @@ void set_columns(Board* board, int columns) {
     board->columns = columns;
 }
 
-// TODO: Returns the size of the board, it is, the total number of squares.
 /**
  * Pre:
- * Post:
- *
- * Returns the size of the board, it is, the total number of squares.
+ * Post: Returns the size of the board, it is, the total number of squares.
  *
  * @param board The board to be queried.
  * @return The size of the board.
@@ -97,12 +78,9 @@ int get_size(Board* board) {
     return size;
 }
 
-// TODO: Returns the board square at the specific position.
 /**
  * Pre:
- * Post:
- *
- * Returns the board square at the specific position.
+ * Post: Returns the board square at the specific position.
  *
  * @param board The board from which the square should be retrieved.
  * @param position The position of the square.
@@ -112,15 +90,9 @@ Square* get_square_at(Board *board, int position) {
     return &board->squares[position];
 }
 
-// TODO: Given a board, a square type, a starting position and a reverse flag, search for the
-//  next square starting from the starting position that has the required square type. If the
-//  'reverse' flag is false, the search is incremental, if 'reverse' is true, the search is
-//  decremental.
 /**
  * Pre:
- * Post:
- *
- * Search for the next square in the board, starting from the starting position that has
+ * Post: Search for the next square in the board, starting from the starting position that has
  * the required square type.
  *
  * @param board The board to be searched.
@@ -136,18 +108,16 @@ int find_square_by_type(Board *board, SquareType type, int starting_position, bo
                 return i;
             }
         }
-    }
-
-    else {
+    } else {
         for(int i = starting_position; i >= 0; i--){
             if(get_type(&board->squares[i]) == type) {
                 return i;
             }
         }
     }
+    return -1;
 }
 
-// TODO: Nothing.
 /**
  * Pre: -
  * Post: -

@@ -1,61 +1,47 @@
 #include "../headers/player.h"
 
-// TODO: Initializes the player's attributes with the provided
-//  and default values.
-
 /**
  * Pre:
- * Post:
- *
- * Initializes the player's attributes with the provided
- * and default values.
+ * Post: Initializes the player's attributes with the provided and default values.
  *
  * @param player The player to be initialized.
  * @param symbol The symbol representing the player.
  */
 void init_player(Player* player, char symbol) {
+    player->current_position = 0;
+    player->symbol = symbol;
+    player->prison = 0;
 }
-
-// TODO: Returns the symbol associated with the player.
 
 /**
  * Pre:
- * Post:
- *
- * Returns the symbol associated with the player.
+ * Post: Returns the symbol associated with the player.
  *
  * @param player The player from which the symbol is required.
  * @return The symbol representing the player.
  */
 char get_symbol(Player* player) {
-    return '\0';
+    return player->symbol;
 }
-
-// TODO: Sets the current position.
 
 /**
  * Pre:
- * Post:
- *
- * Sets the current position.
+ * Post: Sets the current position.
  *
  * @param player The player to be updated.
  * @param position The current position.
  */
 void set_current_position(Player* player, int position) {
+    player->current_position = position;
 }
-
-// TODO: Retrieves the current position.
 
 /**
  * Pre:
- * Post:
- *
- * Retrieves the current position.
+ * Post: Retrieves the current position.
  *
  * @param player The player that stores the current position.
  * @return The current position.
  */
 int get_current_position(Player* player) {
-    return -1;
+    return player->current_position;
 }

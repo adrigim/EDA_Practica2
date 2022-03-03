@@ -36,20 +36,24 @@ void draw_top(FILE* fd, BoardSquare* bSquare) {
     fprintf(fd, "%s", UPPER_LEFT_CORNER);
 
     int type = get_graphical_type(bSquare);
+
     if (type == LEFT_BOTTOM_SQUARE || type == RIGHT_BOTTOM_SQUARE) {
         fprintf(fd, HORIZONTAL_OPEN_BAR);
+
     } else {
         fprintf(fd, "%s", HORIZONTAL_BAR);
     }
+
     fprintf(fd, "%s", UPPER_RIGHT_CORNER);
 }
 
 void draw_middle_top(FILE* fd, BoardSquare* bSquare) {
-
     int graphical_type = get_graphical_type(bSquare);
+
     if (graphical_type == INITIAL_SQUARE || graphical_type == LEFT_FINAL_SQUARE ||
         graphical_type == LEFT_BOTTOM_SQUARE || graphical_type == LEFT_TOP_SQUARE) {
         fprintf(fd, "%s", VERTICAL_BAR);
+
     } else {
         fprintf(fd, "%s", VERTICAL_OPEN_BAR);
     }
@@ -80,16 +84,20 @@ void draw_middle_top(FILE* fd, BoardSquare* bSquare) {
 
     if (graphical_type == RIGHT_FINAL_SQUARE || graphical_type == RIGHT_BOTTOM_SQUARE || graphical_type == RIGHT_TOP_SQUARE) {
         fprintf(fd, "%s", VERTICAL_BAR);
+
     } else {
         fprintf(fd, "%s", VERTICAL_OPEN_BAR);
     }
 }
+
 void draw_middle_bottom(FILE* fd, BoardSquare* bSquare) {
     int graphical_type = get_graphical_type(bSquare);
+
     if (graphical_type == INITIAL_SQUARE || graphical_type == LEFT_FINAL_SQUARE ||
         graphical_type == LEFT_BOTTOM_SQUARE || graphical_type == LEFT_TOP_SQUARE) {
         fprintf(fd, "%s", VERTICAL_BAR);
-    } else {
+    }
+    else {
         fprintf(fd, "%s", VERTICAL_OPEN_BAR);
     }
 
@@ -97,8 +105,10 @@ void draw_middle_bottom(FILE* fd, BoardSquare* bSquare) {
 
     Square* square = get_square(bSquare);
     SquareType type = get_type(square);
+
     if (type == GOOSE) {
         fprintf(fd, "%sG%s", FONT_BLUE, RESET);
+
     } else if (type == DEATH) {
         fprintf(fd, "%sD%s", FONT_BLUE, RESET);
     // Uncomment the following lines to enable bridge and jail to show up in the board.
@@ -120,10 +130,11 @@ void draw_middle_bottom(FILE* fd, BoardSquare* bSquare) {
 
 void draw_bottom(FILE* fd, BoardSquare* bSquare) {
     fprintf(fd, "%s", BOTTOM_LEFT_CORNER);
-
     int type = get_graphical_type(bSquare);
+
     if (type == LEFT_TOP_SQUARE || type == RIGHT_TOP_SQUARE) {
         fprintf(fd, HORIZONTAL_OPEN_BAR);
+
     } else {
         fprintf(fd, "%s", HORIZONTAL_BAR);
     }
@@ -132,7 +143,6 @@ void draw_bottom(FILE* fd, BoardSquare* bSquare) {
 }
 
 void draw_square(FILE* fd, BoardSquare* square, int line) {
-
     if (line == 0) {
         draw_top(fd, square);
 
@@ -151,7 +161,6 @@ void draw_square(FILE* fd, BoardSquare* square, int line) {
 }
 
 void draw_board(FILE* fd, BoardSquare* matrix, int rows, int columns) {
-
     for (int idx=0; idx<rows; idx++) {
         for (int line=0; line<4; line++) {
             for (int jdx = 0; jdx < columns; jdx++) {
@@ -167,7 +176,6 @@ void draw_board(FILE* fd, BoardSquare* matrix, int rows, int columns) {
 }
 
 void draw_zigzag_board(FILE* fd, State* state) {
-
     Board* board = state->board;
     int rows = get_rows(board);
     int columns = get_columns(board);
@@ -176,11 +184,12 @@ void draw_zigzag_board(FILE* fd, State* state) {
     int row = rows-1;
     int column = 0;
     int size = get_size(board);
+
     for (int idx=0; idx < size; idx++) {
         Square* square = get_square_at(board, idx);
         BoardSquare* bSquare = &matrix[row][column];
-
         int type = MIDDLE_SQUARE;
+
         if (idx == 0) {
             type = INITIAL_SQUARE;
             column++;
@@ -199,6 +208,7 @@ void draw_zigzag_board(FILE* fd, State* state) {
                 }
                 column--;
             }
+
         } else {
             if (idx == size-1) {
                 type = RIGHT_FINAL_SQUARE;
@@ -210,28 +220,31 @@ void draw_zigzag_board(FILE* fd, State* state) {
                 if (column == 0) {
                     type = LEFT_TOP_SQUARE;
                 }
+
                 column++;
             }
         }
-
         init_bsquare(bSquare, square, type, EMPTY_CURRENT);
     }
 
     int num_players = get_player_count(state);
+
     for(int idx=0; idx < num_players; idx++) {
         Player* player = get_player(state, idx);
         int position = get_current_position(player);
-
         row = rows - 1 - position / columns;
         column = position % columns;
+
         if (row % 2 == rows % 2) {
             column = columns - 1 - column;
         }
-        BoardSquare* bSquare = &matrix[row][column];
 
+        BoardSquare* bSquare = &matrix[row][column];
         char symbol = get_symbol(player);
+
         if (strcmp(bSquare->current, EMPTY_CURRENT) == 0) {
             sprintf(bSquare->current,"%s%c%c%c%s", BOLD_MAGENTA, symbol, ' ', ' ', RESET);
+
         } else {
             char* space = strstr(bSquare->current, " ");
             *space = symbol;
@@ -249,15 +262,17 @@ void draw_zigzag_board(FILE* fd, State* state) {
  * @return SUCCESS if the board was initialized properly, ERROR if the size is incorrect.
  */
 int init_basic_board(Board* board) {
-
     int status = init_board(board, 3, 3);
-    if (status == SUCCESS) {
 
+    if (status == SUCCESS) {
         int size = get_size(board);
+
         for (int idx = 0; idx < size; idx++) {
             Square* square = get_square_at(board, idx);
+
             if (idx == 2) {
                 set_type(square, GOOSE);
+
             } else if (idx == 7) {
                 set_type(square, GOOSE);
             }

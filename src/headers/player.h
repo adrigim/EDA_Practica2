@@ -4,6 +4,7 @@
 typedef struct {
     char symbol;
     int current_position;
+    int prison;
 } Player;
 
 void init_player(Player* player, char symbol);

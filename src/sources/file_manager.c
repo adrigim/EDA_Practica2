@@ -6,12 +6,9 @@
 // TODO: Reads and loads the data line for the GOOSE by:
 // - Reads each integer and checks it.
 // - If valid, sets the square type to GOOSE
-
 /**
  * Pre:
- * Post:
- *
- * Reads and loads the data line for the GOOSE type.
+ * Post: Reads and loads the data line for the GOOSE type.
  *
  * @param board The board to be configured.
  * @param fd The opened board file.
@@ -24,12 +21,9 @@ int read_goose_type(Board* board, FILE* fd) {
 // TODO: Reads and loads the data line for the DEATH type by:
 // - Reads each integer and checks it. (More than one?)
 // - If valid, sets the square type to DEATH
-
 /**
  * Pre:
- * Post:
- *
- * Reads and loads the data line for the DEATH type.
+ * Post: Reads and loads the data line for the DEATH type.
  *
  * @param board The board to be configured.
  * @param fd The opened board file.
@@ -42,12 +36,9 @@ int read_death_type(Board* board, FILE* fd) {
 // TODO: Reads the two lines that define all the squares of a type and treats them by:
 //  - Reading the square type line and checking it.
 //  - Depending on the type of squares, call the specific function to treat them (i. e. GOOSE -> read_goose_type)
-
 /**
  * Pre:
- * Post:
- *
- * Reads the two lines that define all the squares of a type and treats them according to the type.
+ * Post: Reads the two lines that define all the squares of a type and treats them according to the type.
  *
  * @param board The board to be configured.
  * @param fd The opened board file.
@@ -66,12 +57,9 @@ int read_square_type(Board* board, FILE* fd) {
 // TODO: Loads a board from a file configuration by:
 //  - Reading and checking the dimensions line
 //  - Reading each of the square lines and treating each one by calling to read_square_type
-
 /**
  * Pre:
- * Post:
- *
- * Loads a board from a file configuration.
+ * Post: Loads a board from a file configuration.
  *
  * @param board The board to be configured.
  * @param fd The opened board file.
@@ -94,9 +82,7 @@ int load_board_file(Board* board, FILE* fd) {
 
 /**
  * Pre:
- * Post:
- *
- * Loads a board stored into the file at the specified path.
+ * Post: Loads a board stored into the file at the specified path.
  *
  * @param board The board to be initialized with the contents of the file in path.
  * @param path The path to the file containing a board configuration encoded as a text file.
