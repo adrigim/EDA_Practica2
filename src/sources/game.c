@@ -34,7 +34,6 @@ int wait_keypress(int usec) {
 */
 int throw_dice(bool with_rolling) {
     int value = (rand() % 6) + 1;
-    printf("Dice: %d\n", value);
     /*if (with_rolling) {
         int iterations = 0;
         bool keypressed = false;
@@ -95,7 +94,7 @@ void start_game(Board *board) {
 
     bool quit = false;
     printf("Starting game...\n\n");
-    printf("SIZE: %d:\n", get_size(state.board));
+
     while (!quit) {
         draw_zigzag_board(stdout, &state);
 
@@ -109,7 +108,6 @@ void start_game(Board *board) {
             move(&state, dice_value, true);
 
             quit = is_finished(&state);
-            printf("quit = %d\n", quit);
 
         } else if (option == QUIT) {
             quit = true;
