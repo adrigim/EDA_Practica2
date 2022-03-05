@@ -92,10 +92,9 @@ void set_finished(State* state, bool finished) {
  * @param state The state to be updated.
  */
 bool is_finished(State* state) {
-    Board* board = state->board;
     Player* player = get_current_player(state);
 
-    if (player->current_position == get_size(board)) {
+    if (player->current_position == get_size(state->board) - 1) {
         set_finished(state, true);}
 
     return state->finished;
@@ -113,6 +112,7 @@ bool is_finished(State* state) {
 int move(State* state, int dice_value, bool print_actions) {
     Player* player = get_current_player(state);
     int new_position = get_current_position(player) + dice_value;
+    int final_square = get_size(state->board) - 1;
 
     if (player->prison > 0) {
         player->prison--;
@@ -120,14 +120,14 @@ int move(State* state, int dice_value, bool print_actions) {
         return SUCCESS;
     }
 
-    if (new_position < get_size(state->board)) {
+    if (new_position < final_square) {
         player->current_position += dice_value;
-    } else if (new_position == get_size(state->board)) {
-        player->current_position += dice_value;
-        state->finished = true;
+    } else if (new_position > final_square) {
+        int back = dice_value - (final_square - get_current_position(player));
+        player->current_position = final_square - back;
     } else {
-        int back = dice_value - (get_size(state->board) - get_current_position(player));
-        player->current_position = get_size(state->board) - back;
+        player->current_position += dice_value;
+        return SUCCESS;
     }
 
     Square* square = get_square_at(state->board, player->current_position);

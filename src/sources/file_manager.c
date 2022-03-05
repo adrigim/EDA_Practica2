@@ -73,6 +73,16 @@ int read_square_type(Board* board, FILE* fd) {
  *      - INVALID_SQUARE_TYPE_DATA if invalid data for a type is found.
  */
 int load_board_file(Board* board, FILE* fd) {
+    int rows;
+    int cols;
+    char line[MAX_STRING];
+    while (!feof(fd)) {
+        int matches = fscanf(fd, "%dx%d", &rows, &cols);
+        fgets(line, MAX_LOADING_BUFFER, fd);
+        if (line == GOOSE) {
+
+        }
+    }
     return INVALID_BOARD_DIMENSIONS;
 }
 
@@ -90,5 +100,12 @@ int load_board_file(Board* board, FILE* fd) {
  * other specific error code otherwise.
  */
 int load_board(Board* board, char* path) {
-    return FILE_NOT_FOUND;
+    FILE* file = fopen(path, "r");
+
+    if (file != NULL) {
+        load_board_file(board, file);
+        return SUCCESS;
+    }
+
+    return ERROR;
 }
