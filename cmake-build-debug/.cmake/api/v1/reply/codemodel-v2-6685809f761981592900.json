@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "goose_game",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -38,9 +40,16 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "goose_game_p2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-goose_game_p2-Debug-e89e54f496165601ceb2.json",
-					"name" : "goose_game_p2",
+					"id" : "goose_game_p3_dynamic::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-goose_game_p3_dynamic-Debug-e03cf9a19fe5082207d6.json",
+					"name" : "goose_game_p3_dynamic",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "goose_game_p3_static::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-goose_game_p3_static-Debug-ba0704930aa8fc41186d.json",
+					"name" : "goose_game_p3_static",
 					"projectIndex" : 0
 				}
 			]

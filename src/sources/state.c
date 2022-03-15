@@ -13,11 +13,7 @@ void init_state(State* state, Board* board) {
     state->board = board;
     state->player_count = 0;
     state->turn = 0;
-    state->finished = 0;
-
-    for (int i = 0; i < MAX_PLAYERS; i++) {
-        init_player(&state->players[i], '0');
-    }
+    set_finished(state,0);
 }
 
 /**
@@ -40,9 +36,10 @@ int get_player_count(State* state) {
  * @return SUCCESS if the player was added, ERROR otherwise.
  */
 int add_player(State* state, char symbol) {
-    if (state->player_count < MAX_PLAYERS) {
-        Player* player = &state->players[state->player_count];
-        player->symbol = symbol;
+    int n = get_player_count(state);
+
+    if (n < MAX_PLAYERS) {
+        init_player(get_player(state, n), symbol);
         state->player_count++;
         return SUCCESS;
     }
@@ -92,12 +89,11 @@ void set_finished(State* state, bool finished) {
  * @param state The state to be updated.
  */
 bool is_finished(State* state) {
-    Player* player = get_current_player(state);
+    if (state->finished == true) {
+        return true;
+    }
 
-    if (player->current_position == get_size(state->board) - 1) {
-        set_finished(state, true);}
-
-    return state->finished;
+    return false;
 }
 
 /**
@@ -114,33 +110,24 @@ int move(State* state, int dice_value, bool print_actions) {
     int new_position = get_current_position(player) + dice_value;
     int final_square = get_size(state->board) - 1;
 
-    if (player->prison > 0) {
-        player->prison--;
-        state->turn++;
-        return SUCCESS;
-    }
-
     if (new_position < final_square) {
-        player->current_position += dice_value;
+        set_current_position(player, get_current_position(player) + dice_value);
     } else if (new_position > final_square) {
         int back = dice_value - (final_square - get_current_position(player));
-        player->current_position = final_square - back;
+        set_current_position(player, final_square - back);
     } else {
-        player->current_position += dice_value;
+        set_current_position(player, get_current_position(player) + dice_value);
+        set_finished(state, true);
         return SUCCESS;
     }
 
     Square* square = get_square_at(state->board, player->current_position);
 
     if (get_type(square) == GOOSE) {
-        player->current_position = find_next_position(state, player, GOOSE);
+        set_current_position(player, find_next_position(state, player, GOOSE));
         return SUCCESS;
-    } else if (get_type(square) == BRIDGE) {
-        player->current_position = find_next_position(state, player, BRIDGE);
     } else if (get_type(square) == DEATH) {
-        player->current_position = 0;
-    } else if (get_type(square) == PRISON) {
-        player->prison = 3;
+        set_current_position(player, 0);
     }
 
     state->turn++;

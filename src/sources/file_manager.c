@@ -14,8 +14,28 @@
  * @param fd The opened board file.
  * @return INVALID_SQUARE_POSITION if a position is invalid, SUCCESS otherwise.
  */
-int read_goose_type(Board* board, FILE* fd) {
+int is_valid(Board* board, position, SquareType type) {
+    if (position < get_size(board) - 1) {
+        Square *square = get_square_at(board, position);
+        set_type(square, type);
+        return SUCCESS;
+    }
     return INVALID_SQUARE_POSITION;
+}
+int read_goose_type(Board* board, FILE* fd) {
+    int p1 = -1;
+    char line[MAX_STRING];
+    fgets(line, MAX_LOADING_BUFFER, fd);
+
+    int match = 1;
+    while(match == 1){
+        match = sscanf(line, "%d", &p1);
+        if(p1 > MAX_ROWS*MAX_COLUMNS || p1 < 0){
+            return INVALID_SQUARE_POSITION;
+        }
+        is_valid(board, p1, GOOSE);
+    }
+    return SUCCESS;
 }
 
 // TODO: Reads and loads the data line for the DEATH type by:
@@ -30,7 +50,9 @@ int read_goose_type(Board* board, FILE* fd) {
  * @return INVALID_SQUARE_POSITION if a position is invalid, SUCCESS otherwise.
  */
 int read_death_type(Board* board, FILE* fd) {
-    return INVALID_SQUARE_POSITION;
+    int p;
+    fscanf(fd, "%d", &p);
+    is_valid(board, p, DEATH);
 }
 
 // TODO: Reads the two lines that define all the squares of a type and treats them by:
@@ -51,7 +73,19 @@ int read_death_type(Board* board, FILE* fd) {
  *      - INVALID_SQUARE_TYPE_DATA if invalid data for a type is found.
  */
 int read_square_type(Board* board, FILE* fd) {
-    return INVALID_SQUARE_DATA;
+    char line[MAX_STRING];
+
+    while (!feof(fd)) {
+        fgets(line, MAX_LOADING_BUFFER, fd);
+
+        if (line == "GOOSE") {
+            read_goose_type(board, fd);
+        } else if (line == "DEATH") {
+            read_death_type(board, fd);
+        } else {
+            return INVALID_SQUARE_TYPE;
+        }
+    }
 }
 
 // TODO: Loads a board from a file configuration by:
@@ -75,15 +109,22 @@ int read_square_type(Board* board, FILE* fd) {
 int load_board_file(Board* board, FILE* fd) {
     int rows;
     int cols;
-    char line[MAX_STRING];
+
     while (!feof(fd)) {
         int matches = fscanf(fd, "%dx%d", &rows, &cols);
-        fgets(line, MAX_LOADING_BUFFER, fd);
-        if (line == GOOSE) {
 
+        if (matches != 2) {
+            return INVALID_BOARD_DIMENSIONS;
+        }else if(rows > MAX_ROWS || rows < 0){
+            return INVALID_SQUARE_POSITION;
+        }else if(cols > MAX_COLUMNS || cols < 0){
+            return INVALID_SQUARE_POSITION;
         }
+        set_rows(board, rows);
+        set_columns(board, cols);
+        read_square_type(board, fd);
     }
-    return INVALID_BOARD_DIMENSIONS;
+    return SUCCESS;
 }
 
 // TODO: Loads a board stored into the file at the specified path by:
@@ -107,5 +148,5 @@ int load_board(Board* board, char* path) {
         return SUCCESS;
     }
 
-    return ERROR;
+    return FILE_NOT_FOUND;
 }

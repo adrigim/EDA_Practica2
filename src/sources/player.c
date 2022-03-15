@@ -8,7 +8,7 @@
  * @param symbol The symbol representing the player.
  */
 void init_player(Player* player, char symbol) {
-    player->current_position = 0;
+    set_current_position(player, 0);
     player->symbol = symbol;
     player->prison = 0;
 }

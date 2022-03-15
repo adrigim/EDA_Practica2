@@ -1,18 +1,12 @@
 # ninja log v5
-121	290	1646485447636023126	goose_game_p2	1455e5000605b46b
-2	173	1646484950439847843	CMakeFiles/goose_game_p2.dir/src/sources/game.c.o	f500357b6dbe17ff
+1121	1353	1646497541161903366	goose_game_p2	1455e5000605b46b
+10	1119	1646497540961247588	CMakeFiles/goose_game_p2.dir/src/sources/game.c.o	f500357b6dbe17ff
 23	942	1646327279621845975	CMakeFiles/goose_game_p2.dir/src/sources/board_utils.c.o	4540bef0ef090400
+12	1120	1646497540961247454	CMakeFiles/goose_game_p2.dir/src/sources/file_manager.c.o	3b2838248dfd6775
 965	1056	1645785462822529551	CMakeFiles/goose_game_p2.dir/src/sources/main.c.o	427f00de86769c42
-2	4541	1646481606838614322	CMakeFiles/goose_game_p2.dir/src/sources/file_manager.c.o	3b2838248dfd6775
 1	965	1645785462735784703	CMakeFiles/goose_game_p2.dir/src/sources/utils.c.o	fc7d344e14c46c9f
 14	891	1646327279570682515	CMakeFiles/goose_game_p2.dir/src/sources/board_static.c.o	4d2b55bd2597245b
-2	120	1646485447487588116	CMakeFiles/goose_game_p2.dir/src/sources/state.c.o	d0650c4542d5d530
-777	1072	1646327279753231278	CMakeFiles/goose_game_p2.dir/src/sources/menu.c.o	5a747be05c2f44e9
-18	881	1646327279560749468	CMakeFiles/goose_game_p2.dir/src/sources/player.c.o	20ade3cca735c678
-12	777	1646327279442398768	CMakeFiles/goose_game_p2.dir/src/sources/square.c.o	1d64a25935a465ee
-2	186	1646485518125284085	CMakeFiles/goose_game_p2.dir/src/sources/game.c.o	f500357b6dbe17ff
-186	334	1646485518229773154	goose_game_p2	1455e5000605b46b
-2	172	1646485543223227119	CMakeFiles/goose_game_p2.dir/src/sources/game.c.o	f500357b6dbe17ff
-173	331	1646485543357347122	goose_game_p2	1455e5000605b46b
 5	178	1646485604405746220	CMakeFiles/goose_game_p2.dir/src/sources/state.c.o	d0650c4542d5d530
-178	379	1646485604580832742	goose_game_p2	1455e5000605b46b
+18	881	1646327279560749468	CMakeFiles/goose_game_p2.dir/src/sources/player.c.o	20ade3cca735c678
+777	1072	1646327279753231278	CMakeFiles/goose_game_p2.dir/src/sources/menu.c.o	5a747be05c2f44e9
+12	777	1646327279442398768	CMakeFiles/goose_game_p2.dir/src/sources/square.c.o	1d64a25935a465ee

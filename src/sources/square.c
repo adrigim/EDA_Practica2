@@ -8,8 +8,8 @@
  * @param position The position of the square.
  */
 void init_square(Square* square, int position) {
-    square -> type = EMPTY;
-    square -> position = position;
+    set_type(square, EMPTY);
+    square->position = position;
 }
 
 /**
